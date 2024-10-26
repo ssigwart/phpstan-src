@@ -8451,6 +8451,10 @@ class LegacyNodeScopeResolverTest extends TypeInferenceTestCase
 				'DynamicConstants\DynamicConstantClass::DYNAMIC_CONSTANT_IN_CLASS',
 			],
 			[
+				'string|null',
+				'DynamicConstants\DynamicConstantClass::DYNAMIC_CONSTANT_WITH_EXPLICIT_TYPES_IN_CLASS',
+			],
+			[
 				"'abc123def'",
 				'DynamicConstants\DynamicConstantClass::PURE_CONSTANT_IN_CLASS',
 			],
@@ -8459,12 +8463,16 @@ class LegacyNodeScopeResolverTest extends TypeInferenceTestCase
 				'DynamicConstants\NoDynamicConstantClass::DYNAMIC_CONSTANT_IN_CLASS',
 			],
 			[
-				'false',
+				'bool',
 				'GLOBAL_DYNAMIC_CONSTANT',
 			],
 			[
 				'123',
 				'GLOBAL_PURE_CONSTANT',
+			],
+			[
+				'string|null',
+				'GLOBAL_DYNAMIC_CONSTANT_WITH_EXPLICIT_TYPES',
 			],
 		];
 	}
@@ -8483,8 +8491,10 @@ class LegacyNodeScopeResolverTest extends TypeInferenceTestCase
 			$expression,
 			'die',
 			[
-				'DynamicConstants\\DynamicConstantClass::DYNAMIC_CONSTANT_IN_CLASS',
-				'GLOBAL_DYNAMIC_CONSTANT',
+				0 => 'DynamicConstants\\DynamicConstantClass::DYNAMIC_CONSTANT_IN_CLASS',
+				1 => 'GLOBAL_DYNAMIC_CONSTANT',
+				'DynamicConstants\\DynamicConstantClass::DYNAMIC_CONSTANT_WITH_EXPLICIT_TYPES_IN_CLASS' => 'string|null',
+				'GLOBAL_DYNAMIC_CONSTANT_WITH_EXPLICIT_TYPES' => 'string|null',
 			],
 		);
 	}

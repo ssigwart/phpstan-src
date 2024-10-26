@@ -25,6 +25,9 @@ final class ConstantResolverFactory
 			$this->container->getParameter('dynamicConstantNames'),
 			$this->container->getParameter('phpVersion'),
 			$composerFactory,
+			$composerFactory->getMinVersion(),
+			$composerFactory->getMaxVersion(),
+			$this->container,
 		);
 	}
 
